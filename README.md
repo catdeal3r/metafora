@@ -1,8 +1,6 @@
 # metafora
 
-| Version |
-| --- |
-| **0.1.2** |
+![version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcatdeal3r%2Fmetafora%2Frefs%2Fheads%2Fmain%2FCargo.toml&query=%24.package.version&label=version)
 
 ## Abstract
 
