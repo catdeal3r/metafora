@@ -139,14 +139,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "darkprism"
-version = "0.1.0"
-dependencies = [
- "clap",
- "curl",
-]
-
-[[package]]
 name = "find-msvc-tools"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -180,6 +172,14 @@ dependencies = [
  "libc",
  "pkg-config",
  "vcpkg",
+]
+
+[[package]]
+name = "metafora"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "curl",
 ]
 
 [[package]]

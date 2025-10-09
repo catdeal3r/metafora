@@ -22,10 +22,10 @@
 #
 ###########################################################################
 
-prefix=/run/media/catdealer/Data/rust/darkprism/target/debug/build/curl-sys-19cdcf4a7e6c476d/out
+prefix=/run/media/catdealer/Data/rust/metafora/target/debug/build/curl-sys-19cdcf4a7e6c476d/out
 exec_prefix=
-libdir=/run/media/catdealer/Data/rust/darkprism/target/debug/build/curl-sys-19cdcf4a7e6c476d/out/lib
-includedir=/run/media/catdealer/Data/rust/darkprism/target/debug/build/curl-sys-19cdcf4a7e6c476d/out/include
+libdir=/run/media/catdealer/Data/rust/metafora/target/debug/build/curl-sys-19cdcf4a7e6c476d/out/lib
+includedir=/run/media/catdealer/Data/rust/metafora/target/debug/build/curl-sys-19cdcf4a7e6c476d/out/include
 supported_protocols=""
 supported_features=""
 

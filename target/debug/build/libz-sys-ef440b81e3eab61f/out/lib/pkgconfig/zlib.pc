@@ -1,4 +1,4 @@
-prefix=/run/media/catdealer/Data/rust/darkprism/target/debug/build/libz-sys-ef440b81e3eab61f/out
+prefix=/run/media/catdealer/Data/rust/metafora/target/debug/build/libz-sys-ef440b81e3eab61f/out
 exec_prefix=@exec_prefix@
 libdir=${prefix}/lib
 sharedlibdir=@sharedlibdir@

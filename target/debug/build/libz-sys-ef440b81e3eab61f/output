@@ -35,7 +35,7 @@ PKG_CONFIG_PATH contains the following:
 HINT: you may need to install a package such as zlib, zlib-dev or zlib-devel.
 
 OPT_LEVEL = Some(0)
-OUT_DIR = Some(/run/media/catdealer/Data/rust/darkprism/target/debug/build/libz-sys-ef440b81e3eab61f/out)
+OUT_DIR = Some(/run/media/catdealer/Data/rust/metafora/target/debug/build/libz-sys-ef440b81e3eab61f/out)
 TARGET = Some(x86_64-unknown-linux-gnu)
 CARGO_ENCODED_RUSTFLAGS = Some()
 HOST = Some(x86_64-unknown-linux-gnu)
@@ -241,7 +241,7 @@ ARFLAGS_x86_64_unknown_linux_gnu = None
 cargo:rerun-if-env-changed=ARFLAGS_x86_64-unknown-linux-gnu
 ARFLAGS_x86_64-unknown-linux-gnu = None
 cargo:rustc-link-lib=static=z
-cargo:rustc-link-search=native=/run/media/catdealer/Data/rust/darkprism/target/debug/build/libz-sys-ef440b81e3eab61f/out/lib
-cargo:root=/run/media/catdealer/Data/rust/darkprism/target/debug/build/libz-sys-ef440b81e3eab61f/out
-cargo:rustc-link-search=native=/run/media/catdealer/Data/rust/darkprism/target/debug/build/libz-sys-ef440b81e3eab61f/out/lib
-cargo:include=/run/media/catdealer/Data/rust/darkprism/target/debug/build/libz-sys-ef440b81e3eab61f/out/include
+cargo:rustc-link-search=native=/run/media/catdealer/Data/rust/metafora/target/debug/build/libz-sys-ef440b81e3eab61f/out/lib
+cargo:root=/run/media/catdealer/Data/rust/metafora/target/debug/build/libz-sys-ef440b81e3eab61f/out
+cargo:rustc-link-search=native=/run/media/catdealer/Data/rust/metafora/target/debug/build/libz-sys-ef440b81e3eab61f/out/lib
+cargo:include=/run/media/catdealer/Data/rust/metafora/target/debug/build/libz-sys-ef440b81e3eab61f/out/include
