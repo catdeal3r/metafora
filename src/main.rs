@@ -29,14 +29,14 @@ fn main() {
 
     if cli.file != "none" {
         let mut raw_output = String::new();
-        net::upload_file_and_return_result(&cli.verbose, &cli.file, &mut raw_output).unwrap();
+        net::upload_file_and_add_result_to_str(&cli.verbose, &cli.file, &mut raw_output).unwrap();
 
         if let Some(output) = raw_output.lines().next() {
             println!("{output}");
         }
     } else if cli.url != "none" {
         let mut raw_output = String::new();
-        net::download_and_return_data(&cli.verbose, &cli.url, &mut raw_output).unwrap();
+        net::download_and_add_data_to_str(&cli.verbose, &cli.url, &mut raw_output).unwrap();
 
         if let Some(output) = raw_output.lines().next() {
             println!("{output}");

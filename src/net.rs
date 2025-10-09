@@ -2,7 +2,7 @@ use curl::easy::{Easy, List, Form};
 
 use std::error::Error;
 
-pub fn upload_file_and_return_result(verbose: &bool, filename: &String, r_output: &mut String) -> Result<(), Box<dyn Error>> {
+pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_output: &mut String) -> Result<(), Box<dyn Error>> {
     let mut request = Easy::new();
 
     request.url("https://0x0.st/")?;
@@ -39,7 +39,7 @@ pub fn upload_file_and_return_result(verbose: &bool, filename: &String, r_output
     Ok(())
 }
 
-pub fn download_and_return_data(verbose: &bool, url: &String, r_output: &mut String) -> Result<(), Box<dyn Error>> {
+pub fn download_and_add_data_to_str(verbose: &bool, url: &String, r_output: &mut String) -> Result<(), Box<dyn Error>> {
     let mut request = Easy::new();
 
     request.url(url)?;
