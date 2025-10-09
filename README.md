@@ -1,6 +1,7 @@
 # metafora
 
-![version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcatdeal3r%2Fmetafora%2Frefs%2Fheads%2Fmain%2FCargo.toml&query=%24.package.version&label=version)
+![version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcatdeal3r%2Fmetafora%2Frefs%2Fheads%2Fmain%2FCargo.toml&query=%24.package.version&label=version&style=flat-square)
+![language](https://img.shields.io/badge/language-rust-red?style=flat-square)
 
 ## Abstract
 
