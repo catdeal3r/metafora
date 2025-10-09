@@ -55,12 +55,13 @@ pub fn download_and_return_data(verbose: &bool, url: &String) -> Result<String, 
         request.verbose(true)?;
     }
 
-    request.write_function(|data| {
+    let mut transfer = request.transfer();
+    transfer.write_function(|data| {
         r_output = String::from_utf8_lossy(data).to_string();
         Ok(data.len())
     })?;
 
-    request.perform()?;
+    transfer.perform()?;
 
     Ok(r_output)
 }

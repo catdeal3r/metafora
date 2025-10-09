@@ -1,4 +1,4 @@
-# darkprism-rust
+# metafora
 
 Rust implementation of [DarkPrism](https://github.com/catdeal3r/darkprism).
 
