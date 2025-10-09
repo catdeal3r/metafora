@@ -8,7 +8,7 @@ pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_ou
     request.url("https://0x0.st/")?;
 
     let mut headers = List::new();
-    headers.append("User-Agent: \"gh:catdeal3r/metafora/0.1.2\"")?;
+    headers.append("User-Agent: \"gh:catdealer/metafora/0.1.2\"")?;
 
     request.http_headers(headers)?;
 
