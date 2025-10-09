@@ -10,11 +10,11 @@ struct Cli {
     verbose: bool,
     
     // File to be uploaded
-    #[arg(short, long, default_value_t = "none")]
+    #[arg(short, long, default_value = "none")]
     file: String,
 
     // Url to download from
-    #[arg(short, long, default_value_t = "none")]
+    #[arg(short, long, default_value = "none")]
     url: String,
 }
 
@@ -28,10 +28,16 @@ fn main() {
     }
 
     if cli.file != "none" {
-        let output = net::upload_file_and_return_result(&cli.verbose, &cli.file).unwrap();
-        println!("{output}");
+        let raw_output = net::upload_file_and_return_result(&cli.verbose, &cli.file).unwrap();
+
+        if let Some(output) = raw_output.lines().next() {
+            println!("{output}");
+        }
     } else if cli.url != "none" {
-        let output = net::download_and_return_data(&cli.verbose, &cli.url).unwrap();
-        println!("{output}");
+        let raw_output = net::download_and_return_data(&cli.verbose, &cli.url).unwrap();
+
+        if let Some(output) = raw_output.lines().next() {
+            println!("{output}");
+        }
     }
 }

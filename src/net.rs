@@ -40,6 +40,7 @@ pub fn upload_file_and_return_result(verbose: &bool, filename: &String) -> Resul
 }
 
 pub fn download_and_return_data(verbose: &bool, url: &String) -> Result<String, Box<dyn Error>> {
+    let mut r_output: String = String::new();
     
     let mut request = Easy::new();
 
@@ -54,14 +55,12 @@ pub fn download_and_return_data(verbose: &bool, url: &String) -> Result<String, 
         request.verbose(true)?;
     }
 
-    request.httppost(form)?;
-
     request.write_function(|data| {
-        stdout().write_all(data).expect("stdout().write_all() failed.");
+        r_output = String::from_utf8_lossy(data).to_string();
         Ok(data.len())
     })?;
 
     request.perform()?;
 
-    Ok(request.response_code()?.to_string())
+    Ok(r_output)
 }
