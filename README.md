@@ -1,5 +1,9 @@
 # metafora
 
+| Version |
+| --- |
+| **0.1.2** |
+
 ## Abstract
 
 Rust implementation of [DarkPrism](https://github.com/catdeal3r/darkprism).
