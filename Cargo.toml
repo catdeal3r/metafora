@@ -1,0 +1,8 @@
+[package]
+name = "darkprism"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+curl = { version = "0.4.49", features = [ "ssl" ] }
+clap = { version = "4.5.48", features = [ "derive" ] }
