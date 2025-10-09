@@ -28,13 +28,15 @@ fn main() {
     }
 
     if cli.file != "none" {
-        let raw_output = net::upload_file_and_return_result(&cli.verbose, &cli.file).unwrap();
+        let mut raw_output = String::new();
+        net::upload_file_and_return_result(&cli.verbose, &cli.file, &mut raw_output).unwrap();
 
         if let Some(output) = raw_output.lines().next() {
             println!("{output}");
         }
     } else if cli.url != "none" {
-        let raw_output = net::download_and_return_data(&cli.verbose, &cli.url).unwrap();
+        let mut raw_output = String::new();
+        net::download_and_return_data(&cli.verbose, &cli.url, &mut raw_output).unwrap();
 
         if let Some(output) = raw_output.lines().next() {
             println!("{output}");

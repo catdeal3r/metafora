@@ -1,15 +1,14 @@
 use curl::easy::{Easy, List, Form};
 
-use std::io::{stdout, Write};
 use std::error::Error;
 
-pub fn upload_file_and_return_result(verbose: &bool, filename: &String) -> Result<String, Box<dyn Error>> {
+pub fn upload_file_and_return_result(verbose: &bool, filename: &String, r_output: &mut String) -> Result<(), Box<dyn Error>> {
     let mut request = Easy::new();
 
     request.url("https://0x0.st/")?;
 
     let mut headers = List::new();
-    headers.append("User-Agent: \"darkprism/0.1.0\"")?;
+    headers.append("User-Agent: \"gh:catdeal3r/metafora/0.1.2\"")?;
 
     request.http_headers(headers)?;
 
@@ -29,25 +28,24 @@ pub fn upload_file_and_return_result(verbose: &bool, filename: &String) -> Resul
 
     request.httppost(form)?;
 
-    request.write_function(|data| {
-        stdout().write_all(data).expect("stdout().write_all() failed.");
+    let mut transfer = request.transfer();
+    transfer.write_function(|data| {
+        *r_output = String::from_utf8_lossy(data).to_string();
         Ok(data.len())
     })?;
 
-    request.perform()?;
+    transfer.perform()?;
 
-    Ok(request.response_code()?.to_string())
+    Ok(())
 }
 
-pub fn download_and_return_data(verbose: &bool, url: &String) -> Result<String, Box<dyn Error>> {
-    let mut r_output: String = String::new();
-    
+pub fn download_and_return_data(verbose: &bool, url: &String, r_output: &mut String) -> Result<(), Box<dyn Error>> {
     let mut request = Easy::new();
 
     request.url(url)?;
 
     let mut headers = List::new();
-    headers.append("User-Agent: \"darkprism/0.1.0\"")?;
+    headers.append("User-Agent: \"gh:catdeal3r/metafora/0.1.0\"")?;
 
     request.http_headers(headers)?;
 
@@ -57,11 +55,11 @@ pub fn download_and_return_data(verbose: &bool, url: &String) -> Result<String, 
 
     let mut transfer = request.transfer();
     transfer.write_function(|data| {
-        r_output = String::from_utf8_lossy(data).to_string();
+        *r_output = String::from_utf8_lossy(data).to_string();
         Ok(data.len())
     })?;
 
     transfer.perform()?;
 
-    Ok(r_output)
+    Ok(())
 }
