@@ -1,5 +1,7 @@
 # metafora
 
+## Abstract
+
 Rust implementation of [DarkPrism](https://github.com/catdeal3r/darkprism).
 
 Hosts files on the web using these steps:
@@ -10,4 +12,15 @@ Hosts files on the web using these steps:
 5. Create a file listing the identifiers in order of the file
 6. Upload that, then serve the identifier of that to the user
 
-User can then input that identifier and encryption key back into darkprism for it to download the file.
+User can then input that identifier and encryption key back into metafora for it to download the file.
+
+## Roadmap
+
+- [x] Upload files, unzipped and unencrypted
+- [x] Print the content of the identifier to stdout
+- [ ] Zip file
+- [ ] Unzip file
+- [ ] Encrypt file
+- [ ] Unencrypt file
+- [ ] Split file after zipping and encryption
+- [ ] Form file after decryption and unzip
