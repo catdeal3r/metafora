@@ -30,13 +30,8 @@ fn main() {
     if cli.file != "none" {
         let mut raw_output = String::new();
         
-        match net::upload_file_and_add_result_to_str(&cli.verbose, &cli.file, &mut raw_output) {
-            Err(error) => {
-                println!("{}", error.to_string());
-                return
-            },
-            _other  => {},
-        };
+        let result = net::upload_file_and_add_result_to_str(&cli.verbose, &cli.file, &mut raw_output);
+        result.inspect_err(|err| eprintln!("{}", err));
 
         if let Some(output) = raw_output.lines().next() {
             println!("{output}");

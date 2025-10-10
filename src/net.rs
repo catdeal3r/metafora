@@ -2,7 +2,15 @@ use curl::easy::{Easy, List, Form};
 
 use std::error::Error;
 
-pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_output: &mut String) -> Result<(), Box<dyn Error>> {
+#[derive(thiserror::Error)]
+enum CustomError {
+  #[error("{}", .0.extra_description())]
+  CurlError(#[from] curl::Error),
+  #[error(transparent)]
+  OtherError(#[from] OtherError)
+};
+
+pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_output: &mut String) -> Result<(), CustomError> {
     let mut request = Easy::new();
 
     request.url("https://0x0.st/")?;
