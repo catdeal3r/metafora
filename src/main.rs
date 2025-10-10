@@ -21,7 +21,7 @@ struct Cli {
 
 fn main() {
     let cli = Cli::parse();
-    let verbose = &cli.quiet;
+    let verbose = &!cli.quiet;
 
     if cli.file != "none" && cli.url != "none" {
         println!("You cannot download and upload a file at the same time.");
