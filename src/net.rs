@@ -76,5 +76,8 @@ pub fn download_and_add_data_to_str(verbose: &bool, url: &String, r_output: &mut
 }
 
 pub fn report_error(result: Result<(), CustomNetError>) {
-    let _ = result.inspect_err(|err| eprintln!("({}): {}", "Error".red(), err));
+    match result.inspect_err(|err| eprintln!("({}): {}", "Error".red(), err)) {
+        Err(_) => std::process::exit(1),
+        _ => {}
+    }
 }
