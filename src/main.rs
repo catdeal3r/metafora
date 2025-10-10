@@ -5,9 +5,9 @@ pub mod net;
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 struct Cli {
-    /// Show debug information
+    /// Hide debug information
     #[arg(short, long, default_value_t = false)]
-    verbose: bool,
+    quiet: bool,
     
     // File to be uploaded
     #[arg(short, long, default_value = "none")]
@@ -21,6 +21,7 @@ struct Cli {
 
 fn main() {
     let cli = Cli::parse();
+    let verbose = &cli.quiet;
 
     if cli.file != "none" && cli.url != "none" {
         println!("You cannot download and upload a file at the same time.");
@@ -30,7 +31,7 @@ fn main() {
     if cli.file != "none" {
         let mut raw_output = String::new();
         
-        let result = net::upload_file_and_add_result_to_str(&cli.verbose, &cli.file, &mut raw_output);
+        let result = net::upload_file_and_add_result_to_str(&verbose, &cli.file, &mut raw_output);
         
         net::report_error(result.clone());
 
@@ -41,7 +42,7 @@ fn main() {
     } else if cli.url != "none" {
         let mut raw_output = String::new();
         
-        let result = net::download_and_add_data_to_str(&cli.verbose, &cli.url, &mut raw_output);
+        let result = net::download_and_add_data_to_str(&verbose, &cli.url, &mut raw_output);
         
         net::report_error(result.clone());
 
