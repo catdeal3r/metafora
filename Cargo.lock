@@ -109,6 +109,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b05b61dc5112cbb17e4b6cd61790d9845d13888356391624cbe7e41efeac1e75"
 
 [[package]]
+name = "colored"
+version = "2.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "117725a109d387c937a1533ce01b450cbde6b88abceea8473c4d7a85853cda3c"
+dependencies = [
+ "lazy_static",
+ "windows-sys 0.59.0",
+]
+
+[[package]]
 name = "curl"
 version = "0.4.49"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -157,6 +167,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7943c866cc5cd64cbc25b2e01621d07fa8eb2a1a23160ee81ce38704e97b8ecf"
 
 [[package]]
+name = "lazy_static"
+version = "1.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
+
+[[package]]
 name = "libc"
 version = "0.2.176"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -179,7 +195,9 @@ name = "metafora"
 version = "0.1.2"
 dependencies = [
  "clap",
+ "colored",
  "curl",
+ "thiserror",
 ]
 
 [[package]]
@@ -270,6 +288,26 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-ident",
+]
+
+[[package]]
+name = "thiserror"
+version = "2.0.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f63587ca0f12b72a0600bcba1d40081f830876000bb46dd2337a3051618f4fc8"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "2.0.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]

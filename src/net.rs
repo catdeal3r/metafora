@@ -1,16 +1,19 @@
 use curl::easy::{Easy, List, Form};
 
-use std::error::Error;
+use colored::Colorize;
 
 #[derive(thiserror::Error)]
-enum CustomError {
-  #[error("{}", .0.extra_description())]
+#[derive(Debug)]
+#[derive(Clone)]
+pub enum CustomNetError {
+  #[error("{}", .0.description())]
   CurlError(#[from] curl::Error),
+  
   #[error(transparent)]
-  OtherError(#[from] OtherError)
-};
+  FormError(#[from] curl::FormError),
+}
 
-pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_output: &mut String) -> Result<(), CustomError> {
+pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_output: &mut String) -> Result<(), CustomNetError> {
     let mut request = Easy::new();
 
     request.url("https://0x0.st/")?;
@@ -47,7 +50,7 @@ pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_ou
     Ok(())
 }
 
-pub fn download_and_add_data_to_str(verbose: &bool, url: &String, r_output: &mut String) -> Result<(), Box<dyn Error>> {
+pub fn download_and_add_data_to_str(verbose: &bool, url: &String, r_output: &mut String) -> Result<(), CustomNetError> {
     let mut request = Easy::new();
 
     request.url(url)?;
@@ -70,4 +73,8 @@ pub fn download_and_add_data_to_str(verbose: &bool, url: &String, r_output: &mut
     transfer.perform()?;
 
     Ok(())
+}
+
+pub fn report_error(result: Result<(), CustomNetError>) {
+    let _ = result.inspect_err(|err| eprintln!("({}): {}", "Error".red(), err));
 }
