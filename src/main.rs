@@ -29,25 +29,28 @@ fn main() {
 
     if cli.file != "none" {
         let mut raw_output = String::new();
+        
         match net::upload_file_and_add_result_to_str(&cli.verbose, &cli.file, &mut raw_output) {
             Err(error) => {
-                println!("{0:?}", error.to_string());
+                println!("{}", error.to_string());
                 return
             },
-            _  => {},
+            _other  => {},
         };
 
         if let Some(output) = raw_output.lines().next() {
             println!("{output}");
         }
+        
     } else if cli.url != "none" {
         let mut raw_output = String::new();
+        
         match net::download_and_add_data_to_str(&cli.verbose, &cli.url, &mut raw_output) {
             Err(error) => {
-                println!("{0:?}", error.to_string());
+                println!("{}", error.to_string());
                 return
             },
-            _ => {},
+            _other => {},
         };
 
         if let Some(output) = raw_output.lines().next() {
