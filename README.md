@@ -64,7 +64,7 @@ No idea. Start with OpenSSL or similar libraries.
 
 Finally, run this to build:
 ```bash
-cargo build release
+cargo build --release
 ```
 
 The outputted binary will be here: `./target/release/metafora`
