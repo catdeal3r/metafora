@@ -5,16 +5,16 @@ use clap::{Parser, ArgGroup};
 #[command(group(
     ArgGroup::new("mode")
         .required(true)
-        .args(&["file","url"])
+        .args(&["file","identifier"])
 ))]
 pub struct Cli {
     #[arg(short, long, default_value = "", help = "File to upload", hide_default_value = true)]
     pub file: String,
 
-    #[arg(short, long, default_value = "", requires = "output_file_name", help = "Url to download file from", hide_default_value = true)]
-    pub url: String,
+    #[arg(short, long, default_value = "", requires = "output_file_name", help = "File to download's identifier", hide_default_value = true)]
+    pub identifier: String,
 
-    #[arg(short = 'o', long, default_value = "", requires = "url", help = "The filename for a downloaded file", hide_default_value = true)]
+    #[arg(short = 'o', long, default_value = "", requires = "identifier", help = "The filename for a downloaded file", hide_default_value = true)]
     pub output_file_name: String,
 
     #[arg(short, long, default_value_t = false, help = "Disable verbose output")]

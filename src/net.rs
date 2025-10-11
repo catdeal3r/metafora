@@ -81,3 +81,14 @@ pub fn report_error(result: Result<(), CustomNetError>) {
         _ => {}
     }
 }
+
+pub fn clean_upload_url(str: &str) -> &str {
+    let n = 17;
+    let mut char_indices = str.char_indices();
+
+    if let Some((byte_index, _)) = char_indices.nth(n) {
+        &str[byte_index..].trim_end()
+    } else {
+        ""
+    }
+}

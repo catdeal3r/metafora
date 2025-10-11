@@ -4,7 +4,7 @@ pub mod net;
 pub mod log;
 pub mod fs;
 pub mod cli;
-
+pub mod crp;
 
 fn main() {
     let cli = cli::Cli::parse();
@@ -19,14 +19,38 @@ fn main() {
         
         net::report_error(result.clone());
 
-        println!("{raw_output}");
+        if *verbose {
+            println!("\n---")
+        }
+
+        let mut stripped_url = net::clean_upload_url(&raw_output).to_string();
+
+        crp::encode_to_base64(&mut stripped_url);
+
+        println!("{stripped_url}");
         
-    } else if !cli.url.is_empty() {
+    } else if !cli.identifier.is_empty() {
         let mut raw_output = String::new();
-        
-        let result = net::download_and_add_data_to_str(&verbose, &cli.url, &mut raw_output);
+
+        let mut url = "https://0x0.st/s/".to_string();
+        let mut identifier_copy = cli.identifier.clone();
+
+        crp::decode_from_base64(&mut identifier_copy);
+
+        url.push_str(&identifier_copy);
+
+        let result = net::download_and_add_data_to_str(&verbose, &url, &mut raw_output);
         
         net::report_error(result.clone());
+
+        if *verbose {
+            println!("\n---")
+        }
+
+        if raw_output.contains("stop reason = invalid address") {
+            log::report_err(&"Identifier is invalid, has expired, or has been deleted".to_string());
+            return
+        }
 
         fs::create_file_with_content(&raw_output, &cli.output_file_name).unwrap();
 
