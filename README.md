@@ -67,4 +67,4 @@ Finally, run this to build:
 cargo build --release
 ```
 
-The outputted binary will be here: `./target/release/metafora`
+The compiled binary will be here: `./target/release/metafora`
