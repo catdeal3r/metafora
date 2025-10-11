@@ -33,6 +33,10 @@ fn main() {
 
         log_str.push_str(" -o ");
         log_str.push_str(&cli.file);
+
+        if cli.quiet {
+            log_str.push_str(" -q");
+        }
         
         log::report_info(&log_str);
         
