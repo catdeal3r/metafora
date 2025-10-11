@@ -1,3 +1,0 @@
-*.rs linguist-language=Rust
-target/*.c linguist-generated=false
-
