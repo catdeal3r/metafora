@@ -1,1 +1,0 @@
-/run/media/catdealer/Data/rust/metafora/target/debug/metafora: /run/media/catdealer/Data/rust/metafora/src/cli.rs /run/media/catdealer/Data/rust/metafora/src/fs.rs /run/media/catdealer/Data/rust/metafora/src/log.rs /run/media/catdealer/Data/rust/metafora/src/main.rs /run/media/catdealer/Data/rust/metafora/src/net.rs
