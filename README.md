@@ -31,7 +31,7 @@ User can then input that identifier and encryption key back into metafora for it
 
 ## Build
 
-Install required libraries:
+Install rust and required libraries:
 
 ### Linux/*nix
 
@@ -75,7 +75,20 @@ sudo zypper in libopenssl-devel
 ### Windows
 No idea. Start with OpenSSL or similar libraries.
 
-### Build
+### Compiling
+
+First make sure you've cloned the repo:
+
+```bash
+git clone https://github.com/catdeal3r/metafora
+```
+
+Or, if you already have, run this inside of the folder to update the codebase:
+
+```bash
+git reset --hard HEAD
+git pull
+```
 
 #### Release
 
