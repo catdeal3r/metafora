@@ -5,6 +5,7 @@ pub mod log;
 pub mod fs;
 pub mod cli;
 
+
 fn main() {
     let cli = cli::Cli::parse();
     let verbose = &!cli.quiet;
