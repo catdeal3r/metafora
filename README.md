@@ -43,6 +43,9 @@ nix develop
 
 This will run `bash` and put you in the current directory with the required libraries already setup.
 
+> [!Note]
+> You will have to rerun this everytime you wish to compile.
+
 #### Fedora:
 
 ```bash
@@ -60,9 +63,19 @@ No idea. Start with OpenSSL or similar libraries.
 
 ### Build
 
-Finally, run this to build:
+#### Release
+
+To build in release mode:
 ```bash
 cargo build --release
 ```
+The compiled binary will be located here: `./target/release/metafora`
 
-The compiled binary will be here: `./target/release/metafora`
+#### Debug
+
+To build in debug mode:
+```bash
+cargo build
+```
+
+The compiled binary will be located here: `./target/debug/metafora`
