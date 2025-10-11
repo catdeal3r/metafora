@@ -66,6 +66,12 @@ sudo dnf install openssl-devel
 sudo apt install libssl-dev
 ```
 
+#### OpenSUSE:
+
+```bash
+sudo zypper in libopenssl-devel
+```
+
 ### Windows
 No idea. Start with OpenSSL or similar libraries.
 
