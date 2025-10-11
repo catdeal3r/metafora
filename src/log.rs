@@ -14,7 +14,7 @@ pub fn report_warn(str: &String) {
     println!("({}): {}", colored::Colorize::yellow("Warn"), f_str);
 }
 
-pub fn start_logs(cli: &crate::Cli) {
+pub fn start_logs(cli: &crate::cli::Cli) {
     
     if cli.quiet {
         report_warn(&"verbose is off; not logging".to_string());

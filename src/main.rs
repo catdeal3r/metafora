@@ -1,36 +1,12 @@
-use clap::{Parser, ArgGroup};
+use clap::Parser;
 
 pub mod net;
 pub mod log;
 pub mod fs;
-
-#[derive(Parser)]
-#[command(version, about, long_about)]
-#[command(group(
-    ArgGroup::new("mode")
-        .required(true)
-        .args(&["file","url"])
-))]
-pub struct Cli {
-    // File to be uploaded
-    #[arg(short, long, default_value = "")]
-    file: String,
-
-    // Url to download from
-    #[arg(short, long, default_value = "", requires = "output_file_name")]
-    url: String,
-
-    // File output name
-    #[arg(short = 'o', long, default_value = "", requires = "url")]
-    output_file_name: String,
-
-    /// Hide debug information
-    #[arg(short, long, default_value_t = false)]
-    quiet: bool,
-}
+pub mod cli;
 
 fn main() {
-    let cli = Cli::parse();
+    let cli = cli::Cli::parse();
     let verbose = &!cli.quiet;
 
     log::start_logs(&cli);
