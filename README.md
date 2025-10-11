@@ -83,7 +83,7 @@ First make sure you've cloned the repo:
 git clone https://github.com/catdeal3r/metafora
 ```
 
-Or, if you already have, run this inside of the folder to update the codebase:
+Or, if you already have, run this inside of the cloned folder to update the codebase:
 
 ```bash
 git reset --hard HEAD
