@@ -2,6 +2,7 @@ use clap::{Parser, ArgGroup};
 
 pub mod net;
 pub mod log;
+pub mod fs;
 
 #[derive(Parser)]
 #[command(version, about, long_about)]
@@ -16,8 +17,12 @@ pub struct Cli {
     file: String,
 
     // Url to download from
-    #[arg(short, long, default_value = "")]
+    #[arg(short, long, default_value = "", requires = "output_file_name")]
     url: String,
+
+    // File output name
+    #[arg(short = 'o', long, default_value = "", requires = "url")]
+    output_file_name: String,
 
     /// Hide debug information
     #[arg(short, long, default_value_t = false)]
@@ -37,9 +42,7 @@ fn main() {
         
         net::report_error(result.clone());
 
-        if let Some(output) = raw_output.lines().next() {
-            println!("{output}");
-        }
+        println!("{raw_output}");
         
     } else if !cli.url.is_empty() {
         let mut raw_output = String::new();
@@ -48,8 +51,11 @@ fn main() {
         
         net::report_error(result.clone());
 
-        if let Some(output) = raw_output.lines().next() {
-            println!("{output}");
-        }
+        fs::create_file_with_content(&raw_output, &cli.output_file_name).unwrap();
+
+        let mut log_str = "File created: ".to_string();
+        log_str.push_str(&cli.output_file_name);
+        
+        log::report_info(&log_str);
     }
 }
