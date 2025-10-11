@@ -27,7 +27,14 @@ fn main() {
 
         crp::encode_to_base64(&mut stripped_url);
 
-        println!("{stripped_url}");
+        let mut log_str = "You can now download this file with this command:\nmetafora -i ".to_string();
+
+        log_str.push_str(&stripped_url);
+
+        log_str.push_str(" -o ");
+        log_str.push_str(&cli.file);
+        
+        log::report_info(&log_str);
         
     } else if !cli.identifier.is_empty() {
         let mut raw_output = String::new();
