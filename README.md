@@ -31,28 +31,26 @@ User can then input that identifier and encryption key back into metafora for it
 
 ## Build
 
+Install required libraries:
+
 ### Linux/*nix
 
-#### Nix/NixOS
-
-If you are using Nix, you can run:
+#### Nix/NixOS:
 
 ```bash
 nix develop
 ```
 
-to install and setup components.
+This will run `bash` and put you in the current directory with the required libraries already setup.
 
-#### Other Distributions
+#### Fedora:
 
-Install OpenSSL libraries:
-
-##### Fedora:
 ```bash
 sudo dnf install openssl-devel
 ```
 
-##### Ubuntu:
+#### Ubuntu:
+
 ```bash
 sudo apt install libssl-dev
 ```
