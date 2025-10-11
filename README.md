@@ -27,3 +27,44 @@ User can then input that identifier and encryption key back into metafora for it
 - [ ] Unencrypt file
 - [ ] Split file after zipping and encryption
 - [ ] Form file after decryption and unzip
+
+
+## Build
+
+### Linux/*nix
+
+#### Nix/NixOS
+
+If you are using Nix, you can run:
+
+```bash
+nix develop
+```
+
+to install and setup components.
+
+#### Other Distributions
+
+Install OpenSSL libraries:
+
+##### Fedora:
+```bash
+sudo dnf install openssl-devel
+```
+
+##### Ubuntu:
+```bash
+sudo apt install libssl-dev
+```
+
+### Windows
+No idea. Start with OpenSSL or similar libraries.
+
+### Build
+
+Finally, run this to build:
+```bash
+cargo build release
+```
+
+The outputted binary will be here: `./target/release/metafora`
