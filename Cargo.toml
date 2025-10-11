@@ -9,3 +9,4 @@ clap = { version = "4.5.48", features = [ "derive" ] }
 thiserror = "2.0.17"
 colored = "2"
 base64 = "0.22.1"
+zip = "6.0.0"

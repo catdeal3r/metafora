@@ -35,6 +35,14 @@ Install required libraries:
 
 ### Linux/*nix
 
+First run this to install rust:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Then install libraries (dependant on OS).
+
 #### Nix/NixOS:
 
 ```bash
