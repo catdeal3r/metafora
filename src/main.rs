@@ -57,6 +57,11 @@ fn main() {
         log::report_info(&log_str);
         
     } else if !cli.identifier.is_empty() {
+        
+        if cli.encryption_key.is_empty() {
+            log::report_warn(&"Not decrypting possibly encrypted file".to_string());
+        }
+
         let mut raw_output: Vec<u8> = Vec::new();
 
         let mut url = "https://0x0.st/s/".to_string();
