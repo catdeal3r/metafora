@@ -13,9 +13,22 @@ fn main() {
     log::start_logs(&cli);
     
     if !cli.file.is_empty() {
+        if !std::path::Path::exists(std::path::Path::new(&cli.file)) {
+
+            let mut log_str = "Can't find file: ".to_string();
+            log_str.push_str(&cli.file);
+
+            log::report_err(&log_str);
+            return
+        }
+
+        let file_contents = std::fs::read_to_string(&cli.file).unwrap();
+        let mut encryption_key = String::new();
+        let encrypted_bytes = crp::encrypt_str(&file_contents, &mut encryption_key);
+        
         let mut raw_output = String::new();
         
-        let result = net::upload_file_and_add_result_to_str(&verbose, &cli.file, &mut raw_output);
+        let result = net::upload_file_and_add_result_to_str(&verbose, &encrypted_bytes, &mut raw_output);
         
         net::report_error(result.clone());
 

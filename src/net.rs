@@ -13,7 +13,7 @@ pub enum CustomNetError {
   FormError(#[from] curl::FormError),
 }
 
-pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_output: &mut String) -> Result<(), CustomNetError> {
+pub fn upload_file_and_add_result_to_str(verbose: &bool, file_content: &Vec<u8>, r_output: &mut String) -> Result<(), CustomNetError> {
     let mut request = Easy::new();
 
     request.url("https://0x0.st/")?;
@@ -30,7 +30,7 @@ pub fn upload_file_and_add_result_to_str(verbose: &bool, filename: &String, r_ou
     let mut form = Form::new();
 
     form.part("file")
-        .file(filename)
+        .buffer(&"file".to_string(), file_content.to_vec())
         .add()?;
 
     form.part("secret")
