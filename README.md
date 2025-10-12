@@ -21,8 +21,8 @@ User can then input that identifier and encryption key back into metafora for it
 - [x] Upload files, unzipped and unencrypted
 - [x] Print the content of the identifier's file to stdout
 - [x] Change above to create a user-specified file and fill that with the content
-- [ ] Encrypt file
-- [ ] Decrypt file
+- [x] Encrypt file
+- [x] Decrypt file
 - [ ] Split file after encryption
 - [ ] Form file after decryption
 
