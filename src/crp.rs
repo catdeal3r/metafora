@@ -24,12 +24,12 @@ pub fn encrypt_str(str_to_encrypt: &String, encryption_key: &mut String) -> Vec<
     [nonce.as_slice(), &ciphertext].concat().to_vec()
 }
 
-pub fn decrypt_str(str_to_decrypt: &mut String, encryption_key: &String) {
+pub fn decrypt_str(str_to_decrypt: &mut Vec<u8>, encryption_key: &String) {
     let key_bytes = <Vec<u8>>::from_hex(encryption_key).unwrap();
     let cipher = Aes256Gcm::new_from_slice(&key_bytes).unwrap();
 
     let (nonce_slice, ciphertext) = str_to_decrypt.split_at(12); // nonce is 12 bytes
-    let nonce = aes_gcm::Nonce::from_slice(nonce_slice.as_bytes());
+    let nonce = aes_gcm::Nonce::from_slice(nonce_slice);
 
-    *str_to_decrypt = String::from_utf8(cipher.decrypt(&nonce, &*ciphertext.as_bytes()).unwrap()).unwrap();
+    *str_to_decrypt = cipher.decrypt(&nonce, &*ciphertext).unwrap();
 }

@@ -14,6 +14,9 @@ pub struct Cli {
     #[arg(short, long, default_value = "", requires = "output_file_name", help = "File to download's identifier", hide_default_value = true)]
     pub identifier: String,
 
+    #[arg(short, long, default_value = "",  help = "Encryption key to decrypt file", hide_default_value = true)]
+    pub encryption_key: String,
+
     #[arg(short = 'o', long, default_value = "", requires = "identifier", help = "The filename for a downloaded file", hide_default_value = true)]
     pub output_file_name: String,
 

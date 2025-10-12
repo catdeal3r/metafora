@@ -50,7 +50,7 @@ pub fn upload_file_and_add_result_to_str(verbose: &bool, file_content: &Vec<u8>,
     Ok(())
 }
 
-pub fn download_and_add_data_to_str(verbose: &bool, url: &String, r_output: &mut String) -> Result<(), CustomNetError> {
+pub fn download_and_add_data_to_str(verbose: &bool, url: &String, r_output: &mut Vec<u8>) -> Result<(), CustomNetError> {
     let mut request = Easy::new();
 
     request.url(url)?;
@@ -66,7 +66,7 @@ pub fn download_and_add_data_to_str(verbose: &bool, url: &String, r_output: &mut
 
     let mut transfer = request.transfer();
     transfer.write_function(|data| {
-        *r_output = String::from_utf8_lossy(data).to_string();
+        *r_output = data.to_vec();
         Ok(data.len())
     })?;
 
