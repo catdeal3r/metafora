@@ -55,19 +55,25 @@ This will run `bash` and put you in the current directory with the required libr
 #### Fedora:
 
 ```bash
-sudo dnf install openssl-devel
+sudo dnf install openssl-devel make automake gcc gcc-c++
 ```
 
 #### Ubuntu:
 
 ```bash
-sudo apt install libssl-dev
+sudo apt install libssl-dev build-essential
 ```
 
 #### OpenSUSE:
 
 ```bash
-sudo zypper in libopenssl-devel
+sudo zypper in libopenssl-devel make automake gcc gcc-c++ 
+```
+
+#### Alpine:
+
+```bash
+sudo apk add openssl-libs-static build-base
 ```
 
 ### Windows

@@ -6,6 +6,15 @@ pub mod fs;
 pub mod cli;
 pub mod crp;
 
+fn chunk_thingy() {
+    let string = "AAABBBCCC";
+    let mut z = string.chars().peekable();
+    while z.peek().is_some() {
+        let chunk: String = z.by_ref().take(52428800).collect();
+        println!("{}", chunk);
+    }
+} // something like this
+
 fn main() {
     let cli = cli::Cli::parse();
     let verbose = &!cli.quiet;
@@ -43,12 +52,12 @@ fn main() {
         let mut log_str = "You can now download this file with this command:\nmetafora -i ".to_string();
 
         log_str.push_str(&stripped_url);
+        
+        log_str.push_str(" -e ");
+        log_str.push_str(&encryption_key);
 
         log_str.push_str(" -o ");
         log_str.push_str(&cli.file);
-
-        log_str.push_str(" -e ");
-        log_str.push_str(&encryption_key);
 
         if cli.quiet {
             log_str.push_str(" -q");
