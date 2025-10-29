@@ -4,8 +4,9 @@ version = "0.1.4"
 edition = "2024"
 
 [dependencies]
-curl = { version = "0.4.49", features = [ "ssl" ] }
+curl = { version = "0.4.49", features = [ "rustls" ] }
 clap = { version = "4.5.48", features = [ "derive" ] }
+rustls = "0.23.34"
 thiserror = "2.0.17"
 colored = "2"
 base64 = "0.22.1"
