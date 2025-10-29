@@ -33,14 +33,51 @@ Install rust and required libraries:
 
 ### Linux/*nix
 
-Run this to install rust (if you haven't already):
+First run this to install rust (if you haven't already):
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
+Then install libraries (dependant on OS).
+
+#### Nix/NixOS:
+
+```bash
+nix develop
+```
+
+This will run `bash` and put you in the current directory with the required libraries already setup.
+
+> [!Note]
+> You will have to rerun this everytime you wish to compile.
+
+#### Fedora:
+
+```bash
+sudo dnf install openssl-devel make automake gcc gcc-c++
+```
+
+#### Ubuntu:
+
+```bash
+sudo apt install libssl-dev build-essential
+```
+
+#### OpenSUSE:
+
+```bash
+sudo zypper in libopenssl-devel make automake gcc gcc-c++ 
+```
+
+#### Alpine:
+
+```bash
+sudo apk add openssl-libs-static build-base
+```
+
 ### Windows
-No idea. Start with rust compilation libraries.
+No idea. Start with OpenSSL or similar libraries.
 
 ### Compiling
 
