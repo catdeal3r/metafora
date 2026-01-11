@@ -91,7 +91,7 @@ fn main() {
         let raw_output_str = String::from_utf8_lossy(raw_output.as_slice());
 
         if raw_output_str.contains("stop reason = invalid address") {
-            log::report_err(&"Identifier is invalid, has expired, or has been deleted".to_string());
+            log::report_err(&"The identifier is invalid, the file has expired or has been deleted".to_string());
             return
         }
 
